@@ -31,27 +31,45 @@ El flujo de datos sigue el patrón (Productor-Consumidor), asegurando que la inf
 
 
 ## Guía de Ejecución
+
 ### Ejecución paso a paso
-*1. Iniciar el Monitor:*
-Abre una terminal y ejecuta el servidor:
-Utilice el `Makefile` incluido para generar los binarios en la carpeta `/bin`:
-  `bash
-  make all
-Bash
+
+#### 1. Iniciar el Monitor
+
+Compila los binarios usando el `Makefile` incluido:
+
+```bash
+make all
+```
+
+Luego ejecuta el monitor:
+
+```bash
 ./bin/monitor -b 20 -p pipeNominal
+```
 
-   * `-b`: Tamaño del buffer circular (ej. 20 espacios).
-   * `-p`: Nombre del pipe para la comunicación.
+| Parámetro | Descripción |
+|-----------|-------------|
+| `-b` | Tamaño del buffer circular (ej. `20` espacios) |
+| `-p` | Nombre del pipe para la comunicación |
 
-*2. Iniciar los Agentes:*
-   Abre terminales adicionales para cada estación:
-   `bash
-   Estación Kennedy
-   ./bin/agenteM -f sensorken.csv -t 1 -p pipeNominal
-   
-    Estación Teusaquillo
-   ./bin/agenteM -f sensorteu.csv -t 2 -p pipeNominal
-   
--f: Archivo fuente de datos.
+---
 
--t: Tiempo de espera entre envíos (segundos).
+#### 2. Iniciar los Agentes
+
+Abre una terminal adicional por cada estación:
+
+**Estación Kennedy**
+```bash
+./bin/agenteM -f sensorken.csv -t 1 -p pipeNominal
+```
+
+**Estación Teusaquillo**
+```bash
+./bin/agenteM -f sensorteu.csv -t 2 -p pipeNominal
+```
+
+| Parámetro | Descripción |
+|-----------|-------------|
+| `-f` | Archivo fuente de datos (CSV) |
+| `-t` | Tiempo de espera entre envíos (segundos) |
