@@ -10,7 +10,7 @@
 
 
 
-##Descripción del Proyecto##
+##Descripción del Proyecto
 Este sistema simula una red de estaciones meteorológicas en Bogotá (Usaquén, Teusaquillo y Kennedy) que envían datos en tiempo real a un servidor central de monitoreo. El proyecto pone en práctica conceptos avanzados de **programación de sistemas**, **concurrencia** e **IPC (Inter-Process Communication)**.
 
 El flujo de datos sigue el patrón (Productor-Consumidor), asegurando que la información se procese de manera ordenada y sin pérdida de integridad.
