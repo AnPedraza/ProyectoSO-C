@@ -30,7 +30,7 @@ all: $(BIN_DIR)/monitor $(BIN_DIR)/agenteM
 # Requiere el código fuente del monitor. Se vincula con la librería de hilos.
 $(BIN_DIR)/monitor: $(SRC_DIR)/monitor.c
 	@mkdir -p $(BIN_DIR)
-	$(CC) $(CFLAGS) $(SRC_DIR)/monitor.c -o $(BIN_DIR)/monitor $(LDFLAGS)
+	$(CC) $(CFLAGS) $(SRC_DIR)/monitor.c -o $(BIN_DIR)/monitor $(LDFLAGS) -lrt 
 
 # Regla para el Agente:
 # Compila el agente junto con el módulo de validaciones para asegurar que la lógica

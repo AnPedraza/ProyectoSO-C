@@ -40,8 +40,9 @@
 #include <unistd.h>       // write, close, sleep
 #include <fcntl.h>        // open, O_WRONLY
 #include <getopt.h>       // getopt para parseo de flags
-#include "../include/comun.h"       // Definición de Medicion y constantes de rango
-#include "../include/validaciones.h"
+#include "comun.h"        // Constantes de rango y estructura Medicion
+#include "validaciones.h" // Función validarRangos()
+
 int main(int argc, char *argv[]) {
 
     /* -----------------------------------------------------------------------
@@ -184,8 +185,7 @@ int main(int argc, char *argv[]) {
         if (sscanf(linea, "%[^,],%d,%d,%d,%s",
                    estacion, &hum, &roc, &pres, hora) == 5) {
 
-            /*
-             * [BUG 4 - CORRECCIÓN]:
+ 
              * Guardar el nombre de la estación del PRIMER parseo exitoso.
              * Este valor se usará en la señal FIN_ al finalizar.
              */
@@ -261,8 +261,6 @@ int main(int argc, char *argv[]) {
      * Cuando el agente termina su archivo, envía "FIN_<estacion>\n" por el pipe.
      * El Monitor cuenta estas señales; cuando recibe NUM_ESTACIONES (3), sabe
      * que todos los agentes han terminado y puede cerrar el sistema.
-     *
-     * [BUG 4 - CORRECCIÓN]:
      * Se usa 'nombre_estacion' (guardado del primer parseo exitoso) en lugar de
      * 'estacion' (variable local del último sscanf, puede ser basura si el archivo
      * estaba vacío o todas las líneas eran inválidas).
